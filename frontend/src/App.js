@@ -94,7 +94,7 @@ function App() {
   return (
     <div className="container mx-auto mt-8 px-4">
       <h1 className="text-3xl text-white font-red text-center shadow-md p-4 mb-4">To-Do List</h1>
-      <TaskForm addTask={addTask} editTaskData={editTaskData} updateTask={updateTask} />
+      <TaskForm serverUrl={SERVER_URL} addTask={addTask} editTaskData={editTaskData} updateTask={updateTask} />
       <TaskList tasks={tasks} toggleTaskCompletion={toggleTaskCompletion} deleteTask={deleteTask} editTask={editTask} toggleFavorite={toggleFavorite} />
     </div>
   );

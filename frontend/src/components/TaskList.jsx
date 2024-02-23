@@ -98,6 +98,7 @@ function TaskList({ tasks, toggleTaskCompletion, deleteTask, editTask, toggleFav
       </div>
 
       <div>
+      <h2 className="text-lg font-semibold mb-2 flex items-center justify-between">Task Lists</h2>
         <ul>
           {tasks.map(task => (
             <li key={task._id} className="bg-white rounded-md shadow-md p-4 mb-4 flex items-center justify-between">
