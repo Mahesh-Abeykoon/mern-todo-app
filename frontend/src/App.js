@@ -38,7 +38,7 @@ function App() {
 
   const updateTask = async (id, title, isFavorite) => { // Modify updateTask function to accept isFavorite parameter
     try {
-      await axios.patch(`${SERVER_URL}/api/tasks/api/tasks/${id}`, { title, favorite: isFavorite }); // Pass isFavorite in the request body
+      await axios.patch(`${SERVER_URL}/api/tasks/${id}`, { title, favorite: isFavorite }); // Pass isFavorite in the request body
       const updatedTasks = tasks.map(task => {
         if (task._id === id) {
           return { ...task, title, favorite: isFavorite }; // Update favorite status
