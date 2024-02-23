@@ -74,3 +74,19 @@ npm start
 cd frontend
 npm start
 ```
+
+#### 3. Open your web browser and navigate to http://localhost:3000 to view the application.
+
+### 🛡️ API Endpoints
+```jsx harmony
+GET /api/tasks: Retrieve all tasks.
+POST /api/tasks: Create a new task.
+PATCH /api/tasks/:id: Update an existing task.
+DELETE /api/tasks/:id: Delete a task.
+```
+
+### Contributing
+#### Contributions are welcome! Feel free to fork the repository and submit pull requests to suggest improvements or new features.
+
+### License
+#### This project is licensed under the MIT License.
