@@ -49,4 +49,28 @@ cd mern-todo-app
 ```
 
 ### 3. Install dependencies for both the server and client:
+```jsx harmony
+npm install
+cd frontend
+npm install
+```
+### 4. Create a .env file in the project root directory and add the following environment variables:
+```jsx harmony
+MONGODB_URI=your_mongodb_connection_string
+PORT=5001
+```
 
+> ### Replace your_mongodb_connection_string with your MongoDB connection string.
+
+### 🔐 Usage
+
+#### 1. Start the Node.js server:
+```jsx harmony
+cd backend
+npm start
+```
+#### 2. Start the React development server (in another terminal):
+```jsx harmony
+cd frontend
+npm start
+```
