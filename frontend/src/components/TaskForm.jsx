@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
-function TaskForm({ serverUrl, addTask, editTaskData, updateTask }) {
+function TaskForm({ addTask, editTaskData, updateTask }) {
   // State hooks for task title and favorite status
   const [title, setTitle] = useState('');
-  const [isFavorite, setIsFavorite] = useState(false);
   const [error, setError] = useState(''); 
 
   // Set form fields if editing task
   useEffect(() => {
     if (editTaskData) {
       setTitle(editTaskData.title);
-      setIsFavorite(editTaskData.favorite);
     }
   }, [editTaskData]);
 
@@ -30,12 +28,11 @@ function TaskForm({ serverUrl, addTask, editTaskData, updateTask }) {
       setError('');
 
       if (editTaskData) {
-        updateTask(editTaskData._id, title, isFavorite);
+        updateTask(editTaskData._id, title);
       } else {
-        addTask(title, isFavorite);
+        addTask(title);
       }
       setTitle('');
-      setIsFavorite(false);
     } catch (error) {
       console.error('Error handling form submission:', error);
     }
