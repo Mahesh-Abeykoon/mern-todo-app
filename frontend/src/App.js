@@ -10,6 +10,8 @@ const SERVER_URL = 'https://mern-todo-app-sx6x.onrender.com';
 function App() {
   const [tasks, setTasks] = useState([]);
   const [editTaskData, setEditTaskData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     fetchTasks();
   }, []);
@@ -18,6 +20,7 @@ function App() {
     try {
       const response = await axios.get(`${SERVER_URL}/api/tasks`);
       setTasks(response.data);
+      setLoading(false);
     } catch (error) {
       console.error('Error fetching tasks:', error);
     }
@@ -94,11 +97,17 @@ function App() {
   return (
     <div className="container mx-auto mt-8 px-4 ">
       <div className="text-5xl font-sans font-medium tracking-wide text-center shadow-md p-4 mb-4">
-        <span className=" bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-violet-600">To-Do List</span>
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-violet-600">To-Do List</span>
       </div>      
       {/* <h1 className="font-sans font-medium tracking-wide text-4xl text-center shadow-md p-4 mb-4">To-Do List</h1> */}
       <TaskForm serverUrl={SERVER_URL} addTask={addTask} editTaskData={editTaskData} updateTask={updateTask} />
-      <TaskList tasks={tasks} toggleTaskCompletion={toggleTaskCompletion} deleteTask={deleteTask} editTask={editTask} toggleFavorite={toggleFavorite} />
+      {loading ? (
+        <div className="text-4xl font-sans text-center"> 
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-violet-800">Loading tasks! Please wait...</span>
+        </div> 
+      ) : (
+        <TaskList tasks={tasks} toggleTaskCompletion={toggleTaskCompletion} deleteTask={deleteTask} editTask={editTask} toggleFavorite={toggleFavorite} />
+      )}    
     </div>
   );
 }
