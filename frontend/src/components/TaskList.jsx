@@ -44,7 +44,7 @@ function TaskList({ tasks, toggleTaskCompletion, deleteTask, editTask, toggleFav
                     {task.favorite && (
                       <li className="bg-white rounded-md shadow-md p-4 mb-4 flex items-center justify-between">
                         <div className="flex items-center">
-                          <span className={task.completed ? 'line-through text-gray-500' : 'text-black'}>{task.title}</span>
+                          <span className={task.completed && task.favorite ? 'line-through text-green-500' : 'text-red-400'}>{task.title}</span>
                         </div>
                       </li>
                     )}
@@ -64,28 +64,26 @@ function TaskList({ tasks, toggleTaskCompletion, deleteTask, editTask, toggleFav
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
           </svg>
-        
-        
             : 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
-
             }
           </button>
         </h2>
         {showCompletedTasks && (
           <>
-            {tasks.filter(task => task.completed && !task.favorite).length === 0 ? (
+            {tasks.filter(task => task.completed).length === 0 ? (
               <p className="text-gray-500">No tasks are done yet.</p>
             ) : (
               <ul>
                 {tasks.map(task => (
                   <React.Fragment key={task._id}>
-                    {task.completed && !task.favorite && (
+                    {task.completed &&(
                       <li className="bg-white rounded-md shadow-md p-4 mb-4 flex items-center justify-between">
                         <div className="flex items-center">
-                          <span className="line-through text-gray-500">{task.title}</span>
+                          {/* <span className="line-through text-gray-500">{task.title}</span> */}
+                          <span className={task.favorite && task.completed ? "line-through text-red-300" : 'line-through text-green-500'}>{task.title}</span>
                         </div>
                       </li>
                     )}
